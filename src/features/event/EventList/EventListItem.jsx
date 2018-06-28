@@ -6,14 +6,13 @@ class EventListItem extends Component {
   render() {
     var { event } = this.props;
     return (
-      <div>
         <Segment.Group>
           <Segment>
             <Item.Group>
               <Item>
                 <Item.Image size="tiny" circular src={event.hostPhotoURL} />
                 <Item.Content>
-                  <Item.Header as="a">{event.Title}</Item.Header>
+                  <Item.Header as="a">{event.title}</Item.Header>
                   <Item.Description>
                     Hosted by <a>{event.hostedBy}</a>
                   </Item.Description>
@@ -29,7 +28,7 @@ class EventListItem extends Component {
           </Segment>
           <Segment secondary>
             <List horizontal>
-              {event.attendees.map(attendee => (
+              {event.attendees && event.attendees.map(attendee => (
                 <EventListAttendee key={attendee.id} attendee={attendee} />
               ))}
             </List>
@@ -39,7 +38,6 @@ class EventListItem extends Component {
             <Button as="a" color="teal" floated="right" content="View" />
           </Segment>
         </Segment.Group>
-      </div>
     );
   }
 }
